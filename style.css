@@ -283,27 +283,171 @@ h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',serif;color:#1c2b1c}
 .form-submit:hover{background:var(--green-dark)}
 
 /* ═══════════ RESPONSIVE ═══════════ */
+
+/* Mobile nav overlay */
+.nav-links.open{display:flex!important;flex-direction:column;position:fixed;top:76px;left:0;right:0;bottom:0;background:#fff;padding:20px 28px;z-index:999;gap:0;overflow-y:auto;box-shadow:0 10px 40px rgba(0,0,0,.1);animation:slideDown .25s ease}
+.nav-links.open>li>a{padding:16px 0;font-size:.95rem;border-bottom:1px solid var(--g200)}
+.nav-links.open .dropdown{position:static;opacity:1;visibility:visible;box-shadow:none;border-top:none;min-width:auto;border-radius:0;padding-left:16px}
+.nav-links.open .dropdown a{padding:10px 0;border-bottom:1px solid var(--g100);font-size:.88rem}
+.nav-links.open .nav-consult{display:inline-block;margin-top:16px;text-align:center;padding:14px 0;border:none}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+
+/* Hamburger animation */
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* Mobile phone bar (shown on mobile only) */
+.mobile-phone{display:none;background:var(--green);text-align:center;padding:10px;color:#fff;font-weight:700;font-size:.9rem}
+.mobile-phone a{color:#fff;display:flex;align-items:center;justify-content:center;gap:6px}
+.mobile-phone svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+
+/* ── TABLET (max 1024px) ── */
 @media(max-width:1024px){
   .hero .container{flex-direction:column;text-align:center}
-  .hero-right{flex:auto}.hero-desc{margin:0 auto 32px}
-  .solutions-content{flex-direction:column}.solutions-mockup{flex:auto}
-  .services-grid,.why-grid{grid-template-columns:1fr}
-  .about-section .container,.consultation .container{grid-template-columns:1fr}
+  .hero-right{flex:auto;width:100%;max-width:420px;margin:0 auto}
+  .hero-desc{margin:0 auto 32px}
+  .hero-bullets{justify-content:center}
+  .hero h1{font-size:2.2rem}
+  .solutions-content{flex-direction:column}
+  .solutions-mockup{flex:auto;max-width:500px;margin:0 auto}
+  .services-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .about-section .container{grid-template-columns:1fr}
+  .consultation .container{grid-template-columns:1fr}
+  .consultation-info{text-align:center}
+  .consult-detail{justify-content:center}
+  .consult-socials{justify-content:center}
   .blog-grid{grid-template-columns:1fr 1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .page-content .two-col{grid-template-columns:1fr}
   .feature-cards{grid-template-columns:1fr 1fr}
-  .team-grid,.testi-page-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .testi-page-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(3,1fr)}
+  .testi-card{min-width:300px;max-width:300px}
 }
+
+/* ── MOBILE (max 768px) ── */
 @media(max-width:768px){
-  .nav-links,.nav-right{display:none}.hamburger{display:block}
-  .hero h1{font-size:2rem}
-  .services-grid,.blog-grid,.team-grid,.feature-cards{grid-template-columns:1fr}
-  .stats-grid{grid-template-columns:1fr}
-  .mstep-form .f-row{grid-template-columns:1fr}
-  .form-row{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr}
+  /* Nav */
+  .nav-links,.nav-right{display:none}
+  .hamburger{display:block}
+  .mobile-phone{display:block}
+  .top-nav .container{height:66px}
+  .logo-img{height:36px}
+
+  /* Hero */
+  .hero{padding:50px 0 60px}
+  .hero h1{font-size:1.75rem;line-height:1.25}
+  .hero-desc{font-size:.95rem}
+  .hero-cta-btn{padding:14px 32px;font-size:.92rem;width:100%;display:block}
+  .hero-bullets{flex-direction:column;gap:8px;align-items:center}
+  .hero-bullets li{font-size:.75rem}
+  .hero-img-placeholder{height:240px}
+
+  /* Sections */
+  .container{padding:0 18px}
+  .solutions{padding:50px 0}
+  .solutions h2{font-size:1.5rem;margin-bottom:30px}
+  .solutions-text h3{font-size:1.25rem}
   .phone-frame{display:none}
+  .laptop-frame{max-width:100%}
+
+  /* Services */
+  .services{padding:50px 0}
+  .services-grid{grid-template-columns:1fr;gap:16px}
+  .svc-card{padding:22px 18px}
+
+  /* Stats */
+  .stats-bar{padding:40px 0}
+  .stats-grid{grid-template-columns:1fr;gap:24px}
+  .stat-num{font-size:2.2rem}
+  .stats-content h2{font-size:1.4rem}
+
+  /* Why us */
+  .why-us{padding:50px 0}
+  .why-head h2{font-size:1.4rem}
+  .why-grid{grid-template-columns:1fr;gap:24px}
+
+  /* About */
+  .about-section{padding:50px 0}
+  .about-section .container{gap:30px}
+  .about-text h2{font-size:1.3rem}
+  .about-sidebar{padding:28px 22px}
+
+  /* Form */
+  .consultation{padding:50px 0}
+  .consultation .container{gap:30px}
+  .mstep-form{padding:24px 18px;border-radius:10px}
+  .mstep-form .f-row{grid-template-columns:1fr;gap:14px}
+  .mstep-footer{flex-direction:column;gap:14px;align-items:stretch}
+  .mstep-footer-right{justify-content:space-between;width:100%}
+  .mstep-next{padding:12px 24px;font-size:.85rem;flex:1;justify-content:center}
+  .mstep-back{padding:12px 20px;font-size:.82rem}
+  .mstep-checks{gap:8px}
+  .mstep-checks label{padding:8px 12px;font-size:.82rem}
+
+  /* Testimonials bar */
+  .testimonials-bar{padding:36px 0}
+  .testi-header p{font-size:1.15rem}
+  .testi-card{min-width:280px;max-width:280px;padding:20px}
+  .testi-text{font-size:.84rem}
+
+  /* Blog */
+  .blog-grid{grid-template-columns:1fr;gap:16px}
+  .blog-thumb{height:150px}
+  .blog-card-body{padding:18px}
+
+  /* Footer */
+  .footer{padding:40px 0 20px}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .footer-bottom{flex-direction:column;text-align:center;gap:16px}
+
+  /* Inner pages */
+  .page-hero{padding:40px 0}
+  .page-hero h1{font-size:1.6rem}
+  .page-hero p{font-size:.9rem}
+  .page-content{padding:40px 0}
+  .page-content h2{font-size:1.25rem}
+  .feature-cards{grid-template-columns:1fr;gap:14px}
+  .feature-card{padding:20px 16px}
+  .team-grid{grid-template-columns:1fr;gap:16px}
+  .testi-page-grid{grid-template-columns:1fr;gap:16px}
+  .testi-page-card{padding:22px}
+  .form-container{padding:24px 18px}
+  .form-row{grid-template-columns:1fr}
+  .video-placeholder{aspect-ratio:16/10}
+
+  /* Bottom CTA */
+  .bottom-cta{padding:36px 0}
+  .bottom-cta h2{font-size:1.2rem}
+  .bottom-cta-links{flex-direction:column;align-items:center}
+  .btn-primary,.btn-secondary{width:100%;text-align:center;max-width:300px}
+
+  /* Portfolio grid on web design page */
+  div[style*="grid-template-columns: 1fr 1fr 1fr"]{grid-template-columns:1fr!important}
+
+  /* FAQ */
+  .faq-section{padding:40px 0}
+  .faq-q{padding:14px 16px;font-size:.88rem}
+  .faq-a{padding:0 16px 14px;font-size:.85rem}
+}
+
+/* ── SMALL MOBILE (max 480px) ── */
+@media(max-width:480px){
+  .hero h1{font-size:1.5rem}
+  .hero-desc{font-size:.88rem}
+  .hero-bullets li{font-size:.7rem;letter-spacing:.5px}
+  .container{padding:0 14px}
+  .mstep-form{padding:20px 14px}
+  .mstep-form input,.mstep-form select,.mstep-form textarea{padding:12px;font-size:.86rem}
+  .svc-card{flex-direction:column;gap:12px}
+  .svc-icon{width:42px;height:42px}
+  .stat-num{font-size:1.8rem}
+  .testi-card{min-width:250px;max-width:250px;padding:18px}
+  .about-sidebar{padding:22px 16px}
+  .page-hero h1{font-size:1.35rem}
 }
 
 
@@ -349,10 +493,3 @@ h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',serif;color:#1c2b1c}
 
 /* Form fields — always white background even on focus */
 .mstep-form input:focus,.mstep-form select:focus,.mstep-form textarea:focus{border-color:#f26546;background:#fff}
-
-@media(max-width:768px){
-  .mstep-form{padding:28px 22px}
-  .mstep-form .f-row{grid-template-columns:1fr}
-  .mstep-footer{flex-direction:column;gap:16px;align-items:flex-start}
-  .hero-bullets{flex-direction:column;gap:10px}
-}
