@@ -9,7 +9,7 @@
 <li><a href="index.html#consultation" class="nav-consult">Free Consultation</a></li>
 </ul>
 <div class="nav-right"><div><div class="nav-quote-text">Call For A Free Quote</div><a href="tel:+18001234567" class="nav-phone-num"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 013.09 5.18 2 2 0 015.11 3h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 11.91a16 16 0 006 6l2.27-2.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>1-800-LAWEDGE</a></div></div>
-<button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+<button class="hamburger" aria-label="Menu"><svg class="hamburger-svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path class="bar1" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"/><path d="M7 16 27 16"/></svg></button>
 </div></nav>
 <div class="mobile-phone"><a href="tel:+18001234567"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 013.09 5.18 2 2 0 015.11 3h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 11.91a16 16 0 006 6l2.27-2.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call 1-800-LAWEDGE</a></div>
 <div class="page-hero"><div class="container"><h1>Law Firm SEO Services</h1><p>Dominate organic search and generate a steady stream of high-quality leads.</p><a href="index.html#consultation" class="btn btn-accent">Get a Free SEO Audit &rarr;</a></div></div>
@@ -30,16 +30,27 @@
 <div><h4>Services</h4><ul><li><a href="seo.html">SEO Services</a></li><li><a href="web-design.html">Web Design</a></li><li><a href="google-ads.html">Google Ads</a></li><li><a href="facebook.html">Facebook</a></li><li><a href="youtube.html">YouTube</a></li></ul></div>
 <div><h4>Practice Areas</h4><ul><li><a href="#">Personal Injury</a></li><li><a href="#">Criminal Defense</a></li><li><a href="#">Family Law</a></li><li><a href="#">Immigration</a></li></ul></div>
 </div><div class="footer-bottom"><div class="footer-copy">&copy; LawEdge Marketing 2026</div><div class="footer-socials"><a href="#"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a><a href="#"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></a><a href="#"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg></a></div></div></div></footer><script>document.querySelectorAll(".faq-q").forEach(q=>q.addEventListener("click",()=>q.parentElement.classList.toggle("open")))</script><script>
-document.querySelector('.hamburger').addEventListener('click',function(){
-  this.classList.toggle('active');
-  document.querySelector('.nav-links').classList.toggle('open');
-});
-// Close mobile menu when a link is clicked
-document.querySelectorAll('.nav-links a').forEach(function(a){
-  a.addEventListener('click',function(){
-    document.querySelector('.hamburger').classList.remove('active');
-    document.querySelector('.nav-links').classList.remove('open');
-  });
-});
+(function(){
+  var ham=document.querySelector('.hamburger');
+  var nav=document.querySelector('.nav-links');
+  if(ham&&nav){
+    ham.addEventListener('click',function(){
+      var open=this.classList.toggle('active');
+      nav.classList.toggle('open',open);
+      document.body.style.overflow=open?'hidden':'';
+    });
+    nav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){
+        ham.classList.remove('active');
+        nav.classList.remove('open');
+        document.body.style.overflow='';
+      });
+    });
+  }
+  window.addEventListener('scroll',function(){
+    var topNav=document.querySelector('.top-nav');
+    if(topNav)topNav.classList.toggle('scrolled',window.scrollY>10);
+  },{passive:true});
+})();
 </script>
 </body></html>
